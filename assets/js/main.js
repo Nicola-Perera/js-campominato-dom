@@ -92,18 +92,20 @@ function cellsPositioning (level, gridArea, bombs_position) {
 
         if (bombs_position.includes(i)) {
             cell.className = 'grid_cell bomb';
+            cell.addEventListener('click', function () {
+                this.style.backgroundColor = 'red';
+            })
         }
         else {
             cell.className = 'grid_cell safe';
+            cell.addEventListener('click', function () {
+                this.style.backgroundColor = 'cornflowerblue';
+            })
         }
         
         gridRef.append(cell);
 
-        // function to change bg color on clickß
-        cell.addEventListener('click', function () {
-            this.style.backgroundColor = 'green';
-        })
-
+        
 }
 
 }
