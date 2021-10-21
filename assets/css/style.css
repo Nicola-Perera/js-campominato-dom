@@ -4,3 +4,20 @@
     margin: 0;
     padding: 0;
 }
+
+/*******
+header  
+**********/
+header {
+    height: 80px;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    width: 15%;
+}
+.logo img {
+    width: 100%;
+}
