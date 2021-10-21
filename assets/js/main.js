@@ -30,12 +30,15 @@ start_game.addEventListener('click', function() {
     const bombs_quantity = 16;
     console.log(level);
 
-    grid_elementsPosition∫ (level, bombs_quantity);
+    const gridArea = currentLevelField (level);
+    console.log(gridArea);
+    const bombs_position = whereYouBoom (gridArea, bombs_quantity);
+    console.log(bombs_position);
 
 })
 
 // my function utilities
-function grid_elementsPosition (level, bombs_quantity) {
+function currentLevelField (level) {
     let gridArea;
 
     // gridArea arrange based on difficutly level
@@ -48,7 +51,10 @@ function grid_elementsPosition (level, bombs_quantity) {
     else if (level == 3) {
         gridArea = 49;
     }
-    console.log(gridArea);
+
+    return (gridArea);
+}
+function whereYouBoom (gridArea, bombs_quantity) {
     
     // create random positions for the bombs based on difficulty level
     const bombs_position = [];
@@ -61,5 +67,6 @@ function grid_elementsPosition (level, bombs_quantity) {
             bombs_position.push(randomNumber);
         }
     }
+    return (bombs_position);
 }
 
