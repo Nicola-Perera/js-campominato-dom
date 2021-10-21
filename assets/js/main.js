@@ -26,12 +26,33 @@ const levelValue = document.getElementById('level');
 
 //default variables
 const bombs_position = [];
-const bombs_quantity = 16;
 
 start_game.addEventListener('click', function() {
     const level = levelValue.value;
     console.log(level);
-    const randomNumber = Math.floor(Math.random() * bombs_quantity) + 1;
-    bombs_position.push(randomNumber);
+    let gridArea;
+    // gridArea arrange based on difficutly level
+    if (level == 1) {
+        gridArea = 100;
+    }
+    else if (level == 2) {
+        gridArea = 81;
+    }
+    else if (level == 3) {
+        gridArea = 49;
+    }
+    const bombsPositionRange = gridArea;
+    console.log(gridArea);
+
+    // create random positions for the bombs based on difficulty level
+    while (bombs_position.length < 16) {
+        
+        const randomNumber = Math.floor(Math.random() * bombsPositionRange) + 1;
+        if (!bombs_position.includes(randomNumber)) {
+
+            bombs_position.push(randomNumber);
+        }
+    }
+
     console.log(bombs_position);
 })
