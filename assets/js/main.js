@@ -26,18 +26,27 @@ const levelValue = document.getElementById('level');
 
 start_game.addEventListener('click', function() {
 
+    // difficulty level picked by the user
     const level = levelValue.value;
     const bombs_quantity = 16;
     console.log(level);
 
+    // field dimension
     const gridArea = currentLevelField (level);
     console.log(gridArea);
+
+    // bombs position
     const bombs_position = whereYouBoom (gridArea, bombs_quantity);
     console.log(bombs_position);
 
+    // grid build
+    cellsPositioning (gridArea, bombs_position);
+
+
 })
 
-// my function utilities
+// MY FUNCTIONS UTILITY
+//function to give grid dimension
 function currentLevelField (level) {
     let gridArea;
 
@@ -54,6 +63,7 @@ function currentLevelField (level) {
 
     return (gridArea);
 }
+//function to insert randomly a certain quantity of bombs into a grid
 function whereYouBoom (gridArea, bombs_quantity) {
     
     // create random positions for the bombs based on difficulty level
@@ -69,4 +79,33 @@ function whereYouBoom (gridArea, bombs_quantity) {
     }
     return (bombs_position);
 }
+//function to build and add cells to a grid
+function cellsPositioning (gridArea, bombs_position) {
+    const gridRef = document.getElementById('grid');
+    gridRef.className = `level_${level}`;
+
+    // loop to add cells to grid
+    for (let i = 1; i <= gridArea; i++) {
+        
+        const cell = document.createElement('div');
+        cell.innerHTML = `<h1>${i}</h1>`
+
+        if (bombs_position.includes(i)) {
+            cell.className = 'grid_cell bomb';
+        }
+        else {
+            cell.className = 'grid_cell safe';
+        }
+        
+        gridRef.append(cell);
+
+        // function to change bg color on clickß
+        cell.addEventListener('click', function () {
+            this.style.backgroundColor = 'green';
+        })
+
+}
+
+}
+
 
