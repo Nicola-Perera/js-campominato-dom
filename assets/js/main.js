@@ -40,7 +40,7 @@ start_game.addEventListener('click', function() {
     console.log(bombs_position);
 
     // grid build
-    cellsPositioning (level, gridArea, bombs_position);
+    cellsPositioning (level, gridArea, bombs_quantity, bombs_position);
 
 
 })
@@ -80,39 +80,41 @@ function whereYouBoom (gridArea, bombs_quantity) {
     return (bombs_position);
 }
 //function to build and add cells to a grid
-function cellsPositioning (level, gridArea, bombs_position) {
+function cellsPositioning (level, gridArea, bombs_quantity, bombs_position) {
     const gridRef = document.getElementById('grid');
     gridRef.className = `level_${level}`;
+    
+    // game continue conditions
+    let safe_cells = gridArea - bombs_quantity;
+    let gameStatus = true;
 
     // loop to add cells to grid
     for (let i = 1; i <= gridArea; i++) {
-        
         const cell = document.createElement('div');
         cell.innerHTML = `<h1>${i}</h1>`
         //condition to keep playing
         
         if (bombs_position.includes(i)) {
             cell.className = 'grid_cell bomb';
-            const bomb = document.querySelector('.bomb');
-            cell.addEventListener('click', function () {
-                bomb.style.backgroundColor = 'red';
-            })
             
+            cell.addEventListener('click', function () {
+                this.style.backgroundColor = 'red';
+
+                })
         }
         else {
             cell.className = 'grid_cell safe';
+
             cell.addEventListener('click', function () {
                 this.style.backgroundColor = 'cornflowerblue';
-            })
-        }
-        
-        
-        gridRef.append(cell);
-    }
-    
-    
-    
 
+                safe_cells++
+                })
+        }
+            
+    gridRef.append(cell);
+
+    }
 }
 
 
