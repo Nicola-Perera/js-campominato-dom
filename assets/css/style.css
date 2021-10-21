@@ -22,3 +22,35 @@ header {
 .logo img {
     width: 100%;
 }
+
+/**********
+main  
+**********/
+#grid {
+    margin:3rem auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+ 
+.grid_cell {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #333;
+    text-align: center;
+    padding-top: 1rem;
+    font-size: .6rem;
+}
+
+/* level dimension */
+.level_1 {
+    width: 600px;
+    height: 600px;
+}
+.level_2 {
+    width: 540px;
+    height: 540px;
+}
+.level_3 {
+    width: 420px;
+    height: 420px;
+}

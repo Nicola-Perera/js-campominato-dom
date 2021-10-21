@@ -40,7 +40,7 @@ start_game.addEventListener('click', function() {
     console.log(bombs_position);
 
     // grid build
-    cellsPositioning (gridArea, bombs_position);
+    cellsPositioning (level, gridArea, bombs_position);
 
 
 })
@@ -80,7 +80,7 @@ function whereYouBoom (gridArea, bombs_quantity) {
     return (bombs_position);
 }
 //function to build and add cells to a grid
-function cellsPositioning (gridArea, bombs_position) {
+function cellsPositioning (level, gridArea, bombs_position) {
     const gridRef = document.getElementById('grid');
     gridRef.className = `level_${level}`;
 
