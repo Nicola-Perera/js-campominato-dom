@@ -89,12 +89,15 @@ function cellsPositioning (level, gridArea, bombs_position) {
         
         const cell = document.createElement('div');
         cell.innerHTML = `<h1>${i}</h1>`
-
+        //condition to keep playing
+        
         if (bombs_position.includes(i)) {
             cell.className = 'grid_cell bomb';
+            const bomb = document.querySelector('.bomb');
             cell.addEventListener('click', function () {
-                this.style.backgroundColor = 'red';
+                bomb.style.backgroundColor = 'red';
             })
+            
         }
         else {
             cell.className = 'grid_cell safe';
@@ -103,10 +106,12 @@ function cellsPositioning (level, gridArea, bombs_position) {
             })
         }
         
-        gridRef.append(cell);
-
         
-}
+        gridRef.append(cell);
+    }
+    
+    
+    
 
 }
 
