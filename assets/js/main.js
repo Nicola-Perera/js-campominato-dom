@@ -24,13 +24,20 @@
 const start_game = document.getElementById('play_button');
 const levelValue = document.getElementById('level');
 
-//default variables
-const bombs_position = [];
-
 start_game.addEventListener('click', function() {
+
     const level = levelValue.value;
+    const bombs_quantity = 16;
     console.log(level);
+
+    grid_elementsPosition∫ (level, bombs_quantity);
+
+})
+
+// my function utilities
+function grid_elementsPosition (level, bombs_quantity) {
     let gridArea;
+
     // gridArea arrange based on difficutly level
     if (level == 1) {
         gridArea = 100;
@@ -41,11 +48,12 @@ start_game.addEventListener('click', function() {
     else if (level == 3) {
         gridArea = 49;
     }
-    const bombsPositionRange = gridArea;
     console.log(gridArea);
-
+    
     // create random positions for the bombs based on difficulty level
-    while (bombs_position.length < 16) {
+    const bombs_position = [];
+    const bombsPositionRange = gridArea;
+    while (bombs_position.length < bombs_quantity) {
         
         const randomNumber = Math.floor(Math.random() * bombsPositionRange) + 1;
         if (!bombs_position.includes(randomNumber)) {
@@ -53,6 +61,5 @@ start_game.addEventListener('click', function() {
             bombs_position.push(randomNumber);
         }
     }
+}
 
-    console.log(bombs_position);
-})
